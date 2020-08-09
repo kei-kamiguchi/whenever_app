@@ -46,6 +46,16 @@ $ crontab -l
 ```
 $ whenever --clear-crontab
 ```
+- cronを停止
+```
+$ crontab -r
+```
+- cronのメールを一括削除
+```
+$ mail
+? delete *
+? q
+```
 ## テスト
 1. 以下のように記述し、gemをインストール
 ```
