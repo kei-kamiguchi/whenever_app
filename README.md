@@ -9,7 +9,7 @@ gem 'whenever', require: false
 ```
 2. 作成したメソッドを実行するタイミングを設定するファイル[config/schedule.rb]を作成
 ```
-$ wheneverize .
+$ bundle exec wheneverize .
 ```
 3. [config/schedule.rb]に実行するタイミングを設定
 ```
@@ -23,6 +23,8 @@ end
 every 1.day, at: '4:30 am' do ～ end
 # 1時間毎
 every :hour do ～ end
+# 1分毎
+every 1.minute do ~ end
 # 日曜日のpm12時
 every :sunday, at: '12pm' do ～ end
 # 毎月27日〜31日まで0:00
@@ -35,7 +37,10 @@ every '0 0 27-31 * * ' do ～ end
 
 4. crontabに設定を反映
 ```
-$ whenever --update-crontab
+# 開発環境
+$ bundle exec whenever --update-cron --set environment=development
+# 本番環境
+$ bundle exec whenever --update-crontab
 ```
 ## コマンド
 - 登録の確認
@@ -44,7 +49,7 @@ $ crontab -l
 ```
 - 登録を削除
 ```
-$ whenever --clear-crontab
+$ bundle exec whenever --clear-crontab
 ```
 - cronを停止
 ```
